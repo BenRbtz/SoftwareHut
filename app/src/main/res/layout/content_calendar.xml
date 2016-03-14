@@ -17,5 +17,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/calendarView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:clickable="true"
+        android:onClick=""
+        android:nestedScrollingEnabled="true" />
 </RelativeLayout>

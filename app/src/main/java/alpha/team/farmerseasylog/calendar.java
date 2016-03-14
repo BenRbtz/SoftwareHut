@@ -1,11 +1,15 @@
 package alpha.team.farmerseasylog;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
 import android.view.View;
+import android.widget.CalendarView;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class calendar extends AppCompatActivity {
 
@@ -16,14 +20,25 @@ public class calendar extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+
     }
 
+
+    public void calendarOnClick(View v){
+        CalendarView calendarView = (CalendarView) v;
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                Toast.makeText(getApplicationContext(), "" + dayOfMonth, 0).show();
+
+            }
+        });
+
+
+    }
 }
+
+
+
+
