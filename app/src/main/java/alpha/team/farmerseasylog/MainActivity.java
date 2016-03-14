@@ -20,6 +20,13 @@ public class MainActivity extends Activity{
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         Button yourButton = (Button) findViewById(R.id.button);
+        Button eReg = (Button) findViewById(R.id.eRegButton);
+
+        eReg.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), easyRegister.class));
+            }
+        });
 
         yourButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
