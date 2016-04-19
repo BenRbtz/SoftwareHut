@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/herdID"
+        android:layout_marginTop="63dp"
+        android:text="Herd Number"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/barID"
+        android:layout_below="@+id/herdID"
+        android:layout_alignStart="@+id/herdID"
+        android:text="Bar Number" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/colourID"
+        android:text="Colour"
+        android:layout_below="@+id/sexID"
+        android:layout_alignStart="@+id/sexID" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/sexID"
+        android:text="Sex"
+        android:layout_below="@+id/barID"
+        android:layout_alignStart="@+id/barID" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/birthDate"
+        android:text="Date Of Birth"
+        android:layout_below="@+id/colourID"
+        android:layout_alignStart="@+id/colourID" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/breedID"
+        android:layout_below="@+id/birthDate"
+        android:layout_alignStart="@+id/birthDate"
+        android:text="Breed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEND"
+        android:id="@+id/sendButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp" />
+
+</RelativeLayout>
