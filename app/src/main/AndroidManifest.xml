@@ -29,6 +29,18 @@
             android:name=".toDoList"
             android:label="@string/title_activity_to_do_list"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".onMovementForm"
+            android:label="@string/title_activity_e_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".easyRegister"
+            android:label="@string/title_activity_easy_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".offMovementForm"
+            android:label="@string/title_activity_off_movement_form"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -1,37 +1,35 @@
 package alpha.team.farmerseasylog;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by Zac on 11/03/2016.
- */
 public class easyRegister extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_eregister);
+        setContentView(R.layout.activity_easy_register);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button send = (Button) findViewById(R.id.sendButton);
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        send.setOnClickListener(new View.OnClickListener() {
+        Button onAddBut = (Button) findViewById(R.id.onAddButton);
+        onAddBut.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), onMovementForm.class));
+            }
+        });
+        Button offAddBut = (Button) findViewById(R.id.offAddButton);
+        offAddBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), offMovementForm.class));
             }
         });
 
+        }
+
     }
-}

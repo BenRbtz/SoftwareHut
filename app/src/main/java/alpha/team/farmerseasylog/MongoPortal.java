@@ -24,27 +24,44 @@ import java.util.Set;
  * Created by yakuza on 13/04/16.
  */
 public class MongoPortal {
-
+    private MongoClientURI uri;
+    private MongoClient client;
+    private DBCollection table;
     public MongoPortal() {
+        uri = new MongoClientURI("mongodb://admin:admin1@ds011291.mlab.com:11291/easylog");
+        Log.v("Connection: ", uri.getURI());
+    }
+
+    public void addEntry(String herdNumber, String barNumber, String sex, String colour, String dateOfBirth, String breed,Boolean isOnForm) {
         try {
-            MongoClientURI uri = new MongoClientURI("mongodb://admin:admin1@ds011291.mlab.com:11291/easylog");
-            Log.v("1Connection: ", uri.getURI());
-            MongoClient client = new MongoClient(uri);
+            client = new MongoClient(uri);
             Log.v("Connected: ", uri.getURI());
-            // if database doesn't exists, MongoDB will create it for you
+
             DB db = client.getDB(uri.getDatabase());
             Log.v("Connection", "Got the database");
-            DBCollection table = db.getCollection("test");
+            if (isOnForm== true)
+            {
+                table = db.getCollection("onMovement");
+            }
+            else
+            {
+                table = db.getCollection("offMovement");
+            }
             BasicDBObject document = new BasicDBObject();
-            document.put("name", "mkyong");
-            document.put("age", 30);
-            document.put("createdDate", new Date());
+            document.put("herdNumber", herdNumber);
+            document.put("barNumber", barNumber);
+            document.put("sex", sex);
+            document.put("colour", colour);
+            document.put("dateOfBirth", dateOfBirth);
+            document.put("breed", breed);
             table.insert(document);
-            Log.v("Connection: ", "Done");
             client.close();
+            Log.v("Connection: ", "Done");
+
         } catch (MongoException e) {
 
             Log.v("ERROR", e.getMessage());
         }
     }
+
 }

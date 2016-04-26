@@ -7,4 +7,8 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_to_do_list">toDoList</string>
     <string name="title_activity_test">test</string>
+    <string name="title_activity_e_register">eRegister</string>
+    <string name="title_activity_easy_register">easyRegister</string>
+    <string name="title_activity_off_movement_form">offMovementForm</string>
+    <string name="title_activity_tests">tests</string>
 </resources>

@@ -22,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mongodb.Mongo;
+
 import org.w3c.dom.Text;
 
 import java.io.File;
@@ -30,35 +32,12 @@ import java.util.TimerTask;
 
 public class MainActivity extends Activity {
 
-    Event[] birthdays;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        birthdays = new Event[3];
-
-        new AsyncTask<Void,Void,Boolean>() {
-
-            @Override
-            protected Boolean doInBackground(Void... params) {
-                new MongoPortal();
-
-                return true;
-            }
-
-
-
-
-        }.execute();
-
-
-
 }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,6 +51,12 @@ public class MainActivity extends Activity {
     }
     public void toDoListButtonOnClick(View v) {
         startActivity(new Intent(getApplicationContext(), toDoList.class));
+    }
+    public void easyRegisterButtonOnClick(View v) {
+        startActivity(new Intent(getApplicationContext(), easyRegister.class));
+    }
+    public void weatherButtonOnClick(View v) {
+        //startActivity(new Intent(getApplicationContext(), Weather.class));
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
