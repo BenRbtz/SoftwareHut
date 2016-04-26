@@ -9,20 +9,18 @@ import android.widget.ImageView;
  */
 public class Event {
 
-    int img;
+    //Date date;
     String title;
     String desc;
 
-    public Event (int icon, String title, String desc){
-        img = icon;
+    public Event (String title, String desc){
+        //img = icon;
         this.title = title;
         this.desc = desc;
 
     }
 
-    public int getImg(){
-        return img;
-    }
+
 
     public String getTitle(){
         return title;

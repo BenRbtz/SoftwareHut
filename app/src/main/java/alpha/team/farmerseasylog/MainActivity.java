@@ -27,7 +27,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends Activity {
 
-    Event[] birthdays;
+
 
 
     @Override
@@ -35,11 +35,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        birthdays = new Event[3];
-
 }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,6 +46,11 @@ public class MainActivity extends Activity {
 
     public void calendarButtonOnClick(View v) {
         startActivity(new Intent(getApplicationContext(), calendar.class));
+    }
+
+    public void todolistButtonOnClick(View v) {
+        ImageView imageView = (ImageView) findViewById(R.id.todoButton);
+        imageView.setImageResource(R.drawable.bens_birthday);
     }
 
     @Override
