@@ -33,6 +33,7 @@ public class easyRegister extends AppCompatActivity {
             }
         });
 
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,5 +41,6 @@ public class easyRegister extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
+
     }
 }

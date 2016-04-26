@@ -1,11 +1,14 @@
 package alpha.team.farmerseasylog;
 
 import android.app.Activity;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -35,6 +38,27 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+
+
+
+        new AsyncTask<Void,Void,Boolean>() {
+
+            @Override
+            protected Boolean doInBackground(Void... params) {
+                new MongoPortal();
+
+                return true;
+            }
+
+
+
+
+        }.execute();
+
+
+
 }
 
     @Override
@@ -48,9 +72,14 @@ public class MainActivity extends Activity {
         startActivity(new Intent(getApplicationContext(), calendar.class));
     }
 
-    public void todolistButtonOnClick(View v) {
-        ImageView imageView = (ImageView) findViewById(R.id.todoButton);
-        imageView.setImageResource(R.drawable.bens_birthday);
+
+
+    public void toDoListButtonOnClick(View v) {
+        startActivity(new Intent(getApplicationContext(), toDoList.class));
+    }
+
+    public void weatherButtonOnClick(View v) {
+        startActivity(new Intent(getApplicationContext(), weather.class));
     }
 
     @Override

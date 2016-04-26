@@ -6,4 +6,9 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_add_event">addEvent</string>
+
+    <string name="title_activity_to_do_list">toDoList</string>
+    <string name="title_activity_test">test</string>
+    <string name="title_activity_weather">weather</string>
+
 </resources>
