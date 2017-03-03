@@ -9,6 +9,14 @@
 
     <string name="title_activity_to_do_list">toDoList</string>
     <string name="title_activity_test">test</string>
+
     <string name="title_activity_weather">weather</string>
+
+
+    <string name="title_activity_e_register">eRegister</string>
+    <string name="title_activity_easy_register">easyRegister</string>
+    <string name="title_activity_off_movement_form">offMovementForm</string>
+    <string name="title_activity_tests">tests</string>
+    <string name="title_activity_on_movement_view">onMovementView</string>
 
 </resources>

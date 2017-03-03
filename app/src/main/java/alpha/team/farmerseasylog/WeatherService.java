@@ -19,19 +19,24 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
- * Created by jacrobertson on 26/04/16.
+ * @author Jac Robertson
  */
 public class WeatherService {
 
     private JSONObject data;
     private JSONObject results;
 
-
+    /**
+     * creates a weather file
+     * @throws UnsupportedEncodingException
+     */
     public WeatherService() throws UnsupportedEncodingException {
-        String file = createFile();
+        String file = createFile();//creates file
 
         try {
             data = new JSONObject(file);
+
+            //parses object query tag as json object from file
             JSONObject query = data.optJSONObject("query");
             results = query.optJSONObject("results");
         } catch (JSONException e) {
@@ -40,23 +45,27 @@ public class WeatherService {
 
     }
 
+    /**
+     * gets weather from uri and inserts in file
+     * @return
+     * @throws UnsupportedEncodingException
+     */
     public String createFile() throws UnsupportedEncodingException {
 
         String yql = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"Bangor Wales\")";
-        String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=%s&format=json", URLEncoder.encode(yql,"UTF-8"));
-
+        String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=%s&format=json", URLEncoder.encode(yql, "UTF-8"));
         StringBuilder result = new StringBuilder();
 
         try {
-            URL url = new URL(endpoint);
-            URLConnection connection = url.openConnection();
+            URL url = new URL(endpoint);//makes url  out of string
+            URLConnection connection = url.openConnection();//connects to url
 
-            InputStream inputStream = connection.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            InputStream inputStream = connection.getInputStream();//opens url stream
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));//reads from stream
 
-
+            //continues reading from url weather forecasts
             String line;
-        while((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 result.append(line);
             }
         } catch (MalformedURLException e) {
@@ -68,16 +77,19 @@ public class WeatherService {
         return result.toString();
     }
 
-
-    public String getTemperature(){
+    /**
+     * @return temp - temperature
+     */
+    public String getTemperature() {
 
         String temp = results.optJSONObject("channel").optJSONObject("item").optJSONObject("condition").optString("temp");
-
         return temp;
-
     }
 
-    public String getLocation(){
+    /**
+     * @return results - returns location
+     */
+    public String getLocation() {
         String city = results.optJSONObject("channel").optJSONObject("location").optString("city");
         String region = results.optJSONObject("channel").optJSONObject("location").optString("region");
 
@@ -86,15 +98,19 @@ public class WeatherService {
         return result;
     }
 
-    public String getCondition(){
+    /**
+     * @return cond- weather conditions
+     */
+    public String getCondition() {
 
         String cond = results.optJSONObject("channel").optJSONObject("item").optJSONObject("condition").optString("text");
         return cond;
-
-
     }
 
-    public int getCode(){
+    /**
+     * @return code - code
+     */
+    public int getCode() {
         int code = results.optJSONObject("channel").optJSONObject("item").optJSONObject("condition").optInt("code");
         return code;
     }
@@ -105,10 +121,6 @@ public class WeatherService {
         return forecast;
 
     }
-
-
-
-
 
 
 }

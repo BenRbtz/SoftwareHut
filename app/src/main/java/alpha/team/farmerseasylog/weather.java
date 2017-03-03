@@ -19,100 +19,97 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+/**
+ * @author Jac Robertson
+ */
 public class weather extends AppCompatActivity {
-
-
-    ImageView iconView;
-    TextView tempView;
-    TextView locationView;
-    TextView conditionView;
-    WeatherService service;
-    ArrayList<String> forecastArray;
+    private ImageView iconView;
+    private TextView tempView,locationView,conditionView;
+    private WeatherService service;
+    private ArrayList<String> forecastArray;
     private ArrayAdapter<String> forecastAdapter;
-    ListView forecastView;
+    private ListView forecastView;
 
+    /**
+     * initalises the activity content
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        findViewItems();
+        forecastArray = new ArrayList<>();
+        getWeatherForecast();
+    }
 
+    /**
+     * finds all the view items and intialises
+     */
+    private void findViewItems() {
         iconView = (ImageView) findViewById(R.id.iconView);
         tempView = (TextView) findViewById(R.id.temperatureTextView);
         locationView = (TextView) findViewById(R.id.locationTextView);
         conditionView = (TextView) findViewById(R.id.conditionTextView);
         forecastView = (ListView) findViewById(R.id.forecastListvView);
 
-        forecastArray = new ArrayList<>();
+    }
 
-
-        new AsyncTask <Void, Void, Void>(){
+    /**
+     * gets the weather forecast
+     */
+    public void getWeatherForecast(){
+        new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    service = new WeatherService();
+                    service = new WeatherService();//gets new weather service
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
                 return null;
             }
 
-
             @Override
             protected void onPostExecute(Void v) {
-                createTodayWeather();
+                createTodayWeather();// gets today weather
                 try {
-                    createForecaseWeather();
+                    createForecastWeather();//gets weeks weather
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }.execute();
-
-
-
-
     }
 
-    public void createTodayWeather(){
-        tempView.setText(service.getTemperature() + "F");
-        locationView.setText(service.getLocation());
-        conditionView.setText(service.getCondition());
-        int resouceID = getResources().getIdentifier("drawable/icon_" + service.getCode(),null,getPackageName());
-        iconView.setImageResource(resouceID);
+    /**
+     * Gets Today's weather and displays on top of view
+     */
+    public void createTodayWeather() {
+        tempView.setText(service.getTemperature() + "F");//adds temperature to temp view
+        locationView.setText(service.getLocation()); //adds location to location view
+        conditionView.setText(service.getCondition()); // adds conditions to condition view
+        int resourceID = getResources().getIdentifier("drawable/icon_" + service.getCode(), null, getPackageName());
+        iconView.setImageResource(resourceID);//displays weather image
+    }
 
-
-
-
-}
-
-    public void createForecaseWeather() throws JSONException {
-        JSONArray forecast = service.getForecast();
-
-
-        for (int i = 0; i < 6; i++){
-            JSONObject obj = forecast.getJSONObject(i);
-            String title = obj.optString("date") + ": " + obj.optString("text");
-            forecastArray.add(title);
+    /**
+     * Get weather forecast for the week and displays
+     * @throws JSONException
+     */
+    public void createForecastWeather() throws JSONException {
+        JSONArray forecast = service.getForecast();//gets weather
+        //7 Day Forecast
+        for (int i = 0; i < 6; i++) {
+            JSONObject obj = forecast.getJSONObject(i);//gets weather for day
+            String title = obj.optString("date") + ": " + obj.optString("text");//formats weather
+            forecastArray.add(title);//adds to forecast array
         }
 
-        forecastAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,forecastArray);
-        forecastView.setAdapter(forecastAdapter);
-
-
-
-
-
-
-
-
-
+        forecastAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, forecastArray);
+        forecastView.setAdapter(forecastAdapter);//updates forecast
     }
-
-
-
-
 }

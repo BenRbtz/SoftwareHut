@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".onMovementForm"
+    tools:showIn="@layout/activity_on_movement_form">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/herdIDOn"
+        android:layout_marginTop="63dp"
+        android:hint="Herd Number"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/barIDOn"
+        android:layout_below="@+id/herdIDOn"
+        android:layout_alignStart="@+id/herdIDOn"
+        android:hint="Bar Number" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/colourIDOn"
+        android:hint="Colour"
+        android:layout_below="@+id/sexIDOn"
+        android:layout_alignStart="@+id/sexIDOn" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/sexIDOn"
+        android:hint="Sex"
+        android:layout_below="@+id/barIDOn"
+        android:layout_alignStart="@+id/barIDOn"
+        android:textIsSelectable="true"
+        android:focusable="false"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/birthDateOn"
+        android:hint="Date Of Birth"
+        android:layout_below="@+id/colourIDOn"
+        android:layout_alignStart="@+id/colourIDOn"
+        android:textIsSelectable="true"
+        android:focusable="false"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/breedIDOn"
+        android:layout_below="@+id/birthDateOn"
+        android:layout_alignStart="@+id/birthDateOn"
+        android:hint="Breed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEND"
+        android:id="@+id/sendButtonOn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="On Movement Form"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/herdIDOn"
+        android:layout_alignEnd="@+id/herdIDOn" />
+</RelativeLayout>

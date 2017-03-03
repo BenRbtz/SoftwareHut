@@ -21,10 +21,13 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class addEvent extends AppCompatActivity {
 
-    String date;
+    private String date;
+    private EditText titleView,descView;
 
-
-
+    /**
+     * Sets up activity content
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,30 +35,31 @@ public class addEvent extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        titleView = (EditText) findViewById(R.id.titleView);
+        descView = (EditText) findViewById(R.id.descView);
+
         Bundle b = getIntent().getExtras();
-        date = b.getString("date");
-
-
-
-
+        date = b.getString("date");//gets date selected from bundle
     }
 
-    public void submitButtonOnClick(View v) throws IOException, SAXException, ParserConfigurationException, URISyntaxException {
+    /**
+     * Adds form content to calender
+     * @param v
+     * @throws IOException
+     * @throws SAXException
+     * @throws ParserConfigurationException
+     * @throws URISyntaxException
+     */
+    public void submitButtonOnClick(View v) throws IOException, SAXException,
+                                                ParserConfigurationException, URISyntaxException {
 
+        XMLWritter write = new XMLWritter(this);// create xml writer
 
-        XMLWritter write = new XMLWritter(this);
+        String title = titleView.getText().toString();//gets title from title view
+        String desc = descView.getText().toString();//gets description from desc view
 
-
-        EditText titleView = (EditText) findViewById(R.id.titleView);
-        EditText descView = (EditText) findViewById(R.id.descView);
-
-
-        String title = titleView.getText().toString();
-        String desc = descView.getText().toString();
-
-
-        write.run(title,date,desc);
-
+        write.run(title,date,desc);//writes event to xml
+        finish();//close activity
     }
 
 }

@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package alpha.team.farmerseasylog;
 
 import android.content.Context;
@@ -33,51 +27,54 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- *
- * @author jacrobertson
+ * @author Jac Robertson
  */
-
 public class XMLWritter {
 
-    static Element mainRootElement;
-    static Document doc;
-    static DocumentBuilder builder;
-    static DocumentBuilderFactory domFactory;
-    Context context;
-    File file;
+    private static Element mainRootElement;
+    private static Document doc;
+    private static DocumentBuilder builder;
+    private static DocumentBuilderFactory domFactory;
+    private Context context;
+    private File file;
 
+    /**
+     * sets context local
+     * @param context
+     */
     public XMLWritter(Context context){
         this.context = context;
-
     }
 
-    public  void run(String title, String date, String desc) throws ParserConfigurationException, IOException, SAXException, URISyntaxException {
+    /**
+     *adds weather forecast into xml file
+     * @param title - event title
+     * @param date - date of event
+     * @param desc - description of event
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     * @throws URISyntaxException
+     */
+    public  void run(String title, String date, String desc) throws ParserConfigurationException,
+                                                    IOException, SAXException, URISyntaxException {
 
-
-
-        File file = new File(context.getFilesDir(),"events.xml");
+        file = new File(context.getFilesDir(),"events.xml");//gets xml file from local directory
+        //creates dom writer
         domFactory = DocumentBuilderFactory.newInstance();
         builder = domFactory.newDocumentBuilder();
-
-
-
         doc = builder.parse(file);
 
-
-        mainRootElement = (Element) doc.getFirstChild();
+        mainRootElement = (Element) doc.getFirstChild();//gets root node
 
         try{
-            mainRootElement.appendChild(setSearches(doc, title, date, desc));
+            mainRootElement.appendChild(setSearches(doc, title, date, desc));// adds event as root child
+            //writes to file
             DOMSource source = new DOMSource(doc);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-
-
-
             StreamResult result = new StreamResult(file);
-
             transformer.transform(source,result);
-
 
         } catch (TransformerConfigurationException e) {
             e.printStackTrace();
@@ -85,19 +82,16 @@ public class XMLWritter {
             e.printStackTrace();
         }
 
-
     }
 
-
-    public Element createStartElements(){
-        Element main = (Element) doc.createElement("events");
-
-        return main;
-
-
-
-    }
-
+    /**
+     * makes child event node
+     * @param doc - xml file
+     * @param title - event title
+     * @param date - event date
+     * @param desc - event description
+     * @return event - event node
+     */
     private static Node setSearches(Document doc,String title, String date, String desc){
         Element event = doc.createElement("event");
 
@@ -107,18 +101,17 @@ public class XMLWritter {
        return event;
     }
 
+    /**
+     *makes a node
+     * @param doc - xml file
+     * @param tag - event tag
+     * @param value - event tag value
+     * @return node - tag node
+     */
     private static Node setNode(Document doc, String tag, String value) {
         Element node = doc.createElement(tag);
-
         node.appendChild(doc.createTextNode(value));
 
         return node;
-
     }
-
-
-
-
-
-
 }

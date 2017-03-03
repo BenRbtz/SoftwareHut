@@ -1,46 +1,56 @@
 package alpha.team.farmerseasylog;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
 /**
- * Created by Zac on 11/03/2016.
+ * @author Ben Roberts
  */
 public class easyRegister extends AppCompatActivity {
-
-
-
+    private Button onAddBut,offAddBut;
+    /**
+     * initalises activity content
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_eregister);
+        setContentView(R.layout.activity_easy_register);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button send = (Button) findViewById(R.id.sendButton);
 
+        findViewItems();
+        buttonListeners();
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
 
+    /**
+     * finds view items
+     */
+    public void findViewItems(){
+        onAddBut = (Button) findViewById(R.id.onAddButton);
+        offAddBut = (Button) findViewById(R.id.offAddButton);
+    }
 
-            }
-        });
-
-
-        fab.setOnClickListener(new View.OnClickListener() {
+    /**
+     * Adds listeners to buttons to open activities
+     */
+    public void buttonListeners() {
+        onAddBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(getApplicationContext(), onMovementForm.class));
             }
-        });*/
-
+        });
+        offAddBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), offMovementForm.class));
+            }
+        });
     }
 }

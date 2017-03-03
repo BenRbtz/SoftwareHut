@@ -11,28 +11,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="alpha.team.farmerseasylog.MainActivity"
-    tools:showIn="@layout/activity_main"
-
-    android:nestedScrollingEnabled="false">
+    tools:showIn="@layout/activity_main">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/calendarButton"
-        android:layout_marginTop="138dp"
+        android:layout_marginTop="120dp"
         android:src="@drawable/calendar_button"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-
-        android:onClick="calendarButtonOnClick" />
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:onClick="calendarButtonOnClick"/>
+        android:onClick="calendarButtonOnClick" />
 
     <ImageView
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
@@ -40,7 +32,6 @@
         android:src="@drawable/weather_button"
         android:layout_alignTop="@+id/calendarButton"
         android:layout_alignParentEnd="true"
-        android:nestedScrollingEnabled="false"
         android:onClick="weatherButtonOnClick" />
 
     <ImageView
@@ -51,18 +42,15 @@
         android:src="@drawable/todolist_button"
         android:layout_below="@+id/calendarButton"
         android:layout_alignStart="@+id/calendarButton"
-
         android:onClick="toDoListButtonOnClick" />
-
-        android:onClick="toDoListButtonOnClick"/>
-
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/reminder_button"
+        android:src="@drawable/easyregister_button"
         android:layout_alignTop="@+id/todoButton"
         android:layout_alignStart="@+id/imageView"
-        android:id="@+id/reminderButton" />
+        android:id="@+id/easyRegisterButton"
+        android:onClick="easyRegisterButtonOnClick"/>
 
 </RelativeLayout>
